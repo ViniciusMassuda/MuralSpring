@@ -2,30 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mural</title>
+    <title th:text="#{mural.titulo.aba}">Mural</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div th:insert="~{cabecalho :: siteHeader}"></div>
-<h1>Envie uma mensagem para o Mural</h1>
+
+<h1 th:text="#{postar.titulo.principal}">Envie uma mensagem para o Mural</h1>
+
 <ul>
-    <li><a th:href="@{/}">Home</a></li>
-    <li><a th:href="@{/mensagens}">Ver Mensagens</a></li>
-    <li><a th:href="@{/logout}">Logout</a></li>
+    <li><a th:href="@{/}" th:text="#{menu.home}">Home</a></li>
+    <li><a th:href="@{/mensagens}" th:text="#{index.link.ver}">Ver Mensagens</a></li>
+    <li><a th:href="@{/logout}" th:text="#{index.link.logout}">Logout</a></li>
 </ul>
 
 <form th:action="@{/postar}" th:object="${sendMessageForm}" method="post">
-    <label for="from">Enviado por:</label><br>
+    <label for="from" th:text="#{postar.label.de}">Enviado por:</label><br>
     <input type="text" th:field="*{from}"><br>
     <div th:if="${#fields.hasErrors('from')}" th:errors="*{from}" class="error-message"></div>
     <br>
 
-    <label for="to">Enviado para:</label><br>
+    <label for="to" th:text="#{postar.label.para}">Enviado para:</label><br>
     <input type="text" th:field="*{to}"><br>
     <div th:if="${#fields.hasErrors('to')}" th:errors="*{to}" class="error-message"></div>
     <br>
 
-    <label for="message">Mensagem:</label><br>
+    <label for="message" th:text="#{postar.label.mensagem}">Mensagem:</label><br>
     <textarea th:field="*{message}" rows="6" cols="40"></textarea><br>
     <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="error-message"></div>
     <br>
@@ -34,7 +36,7 @@
         <div th:each="err : ${#fields.globalErrors()}" class="error-message" th:text="${err}"></div>
     </div>
 
-    <button type="submit">Enviar</button><br>
+    <button type="submit" th:text="#{postar.botao.enviar}">Enviar</button><br>
 </form>
 
 </body>

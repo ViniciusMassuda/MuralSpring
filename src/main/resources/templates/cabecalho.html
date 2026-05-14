@@ -6,9 +6,16 @@
 </head>
 <body>
 <div th:fragment="siteHeader">
-    <div class="mural-header">
-        <b>Usuário:</b>
-        <span th:text="${#authentication.name}">Teste</span>
+    <div class="mural-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #2ecc71; color: white;">
+        <div>
+            <b th:text="#{cabecalho.usuario}">Usuário:</b>
+            <span th:text="${#authentication.name}">Teste</span>
+        </div>
+
+        <div>
+            <a th:href="@{''(lang=pt)}" style="color: white; margin-right: 10px; text-decoration: none; font-weight: bold;">PT 🇧🇷</a>
+            <a th:href="@{''(lang=en)}" style="color: white; text-decoration: none; font-weight: bold;">EN 🇺🇸</a>
+        </div>
     </div>
 </div>
 </body>
